@@ -14,4 +14,4 @@ class Solution(object):
             else:
                 return 0
         else:
-            return num % 9
+            return num % 

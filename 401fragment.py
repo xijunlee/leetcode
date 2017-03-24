@@ -33,3 +33,4 @@ class Solution(object):
         if num-1 >= 0:
             self.dfs(step+1,ret,num-1,digital+(1<<step))
 '''
+

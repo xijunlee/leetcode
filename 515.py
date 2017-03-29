@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 # coding=utf-8
 
+'''
+1、复习了用队列来做bfs的知识点
+2、学到了python中any来巧妙处理队列中元素的存在与否
+'''
+
 # Definition for a binary tree node.
 # class TreeNode(object):
 #     def __init__(self, x):
@@ -17,17 +22,17 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        self.dfs(root,0)
-        return self.ret
+        maxes = []
+        row = [root]
+        while any(row):
+            maxes.append(max([n.val for n in row]))
+            tmp = []
+            for node in row:
+                for kid in (node.left,node.right):
+                    if kid: tmp.append(kid)
+            row = tmp
+        return maxes
+            
+            
         
-    def dfs(self, node, step):
-        if not node:
-            return
-        if step > self.maxStep:
-            self.ret.append(node.val)
-            self.maxStep = step
-        else:
-            self.ret[step] = max(self.ret[step],node.val)
-        self.dfs(node.left,step+1)
-        self.dfs(node.right,step+1)
         

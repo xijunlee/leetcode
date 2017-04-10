@@ -2,7 +2,7 @@
 # coding=utf-8
 
 '''学到了：
-1、Python的字符串和list的分片技术，s[i:j:step],从i出发，一直到j不包括j，步长为step。
+1、Python的字符串和list的分片技术，s[i:j:step],从i出发，一直到j但不包括j本身，步长为step（可正可负）。
 2、要巧妙地利用str->list后，list有reverse()这个函数，但是翻转后不能直接str(l)，得用''.join()
    操作来链接list中的每个元素
 

@@ -13,28 +13,16 @@ class Solution(object):
         while p < len(s):
             if s[p] != ']': stack.append(s[p]) # push element into stack
             else:
-                tmp1, tmp2, num = retStr, '', ''
+                tmp, num = '', ''
                 while len(stack) and stack[-1] != '[':
-                    tmp = stack.pop()
-                    tmp1 += tmp
-                    tmp2 += tmp
+                    tmp += stack.pop()
                 stack.pop()
                 while len(stack) and ord(stack[-1])>=48 and ord(stack[-1])<=57:
                     num += stack.pop()
                 num = int(num[::-1])
-                if flag == 0:
-                    retStr += num*tmp2[::-1]
-                    if (len(stack) and ord(stack[-1]) >= 97 and ord(stack[-1])<=122):
-                        flag = 1
-                else:
-                    retStr = num*tmp1[::-1]
-                    if not (len(stack) and ord(stack[-1]) >= 97 and ord(stack[-1])<=122):
-                        flag = 0
+                for v in num*tmp[::-1]: # flat the repeated string into the stack
+                    stack.append(v)
             p += 1
         for c in stack:
             retStr += c
         return retStr
-
-if __name__ == '__main__':
-	s = Solution()
-	print s.decodeString("100[leetcode]")

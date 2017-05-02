@@ -14,9 +14,15 @@ if __name__ == "__main__":
     f = []
     for i in range(m):
         f.append([0 for j in range(n)])
+    def dp(i,j):
+        if not f[i][j]: return
+        if j+1 >= 0: dp(i,j-1)
+        if i+1 >= 0: dp(i)
+    '''
     for i in range(m):
         for j in range(n):
             if j-1 >= 0: f[i][j] = max(f[i][j],f[i][j-1])
             if i-1 >= 0: f[i][j] = max(f[i][j],f[i-1][j])
             f[i][j] += a[i][j]
+    '''
     print f[m-1][n-1]

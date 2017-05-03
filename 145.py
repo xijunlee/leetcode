@@ -9,7 +9,10 @@
 #         self.right = None
 
 # recursive version
-class Solution(object):
+
+
+
+class Solution1(object):
     def postorderTraversal(self, root):
         """
         :type root: TreeNode
@@ -26,3 +29,31 @@ class Solution(object):
         
         dfs(root)
         return ans
+
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+# iterative version
+class Solution(object):
+    def postorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        ans, stack = [], [root]
+        stack = [root]
+        while stack:
+            top = stack.pop()
+            if top:
+                ans.append(top.val)
+                stack.append(top.left)
+                stack.append(top.right)
+        
+        return ans[::-1]
+
+if __name__ == '__main__':
+    s = Solution()
+    print s.postorderTraversal([])

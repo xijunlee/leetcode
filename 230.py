@@ -9,6 +9,7 @@
 #         self.right = None
 
 # trivial solution
+
 class Solution(object):
     def kthSmallest(self, root, k):
         """
@@ -17,7 +18,7 @@ class Solution(object):
         :rtype: int
         """
         l = []
-        def dfs(node):
+        def countNodeN(node):
             if not node: return
             dfs(node.left)
             l.append(node.val)
@@ -25,6 +26,7 @@ class Solution(object):
             return
         dfs(root)
         return l[k-1]
+            
             
 
 

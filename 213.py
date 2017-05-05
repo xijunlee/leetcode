@@ -7,6 +7,16 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        if len(nums) >= 2:
+            nums1 = nums[:len(nums)-1]
+            nums2 = nums[1:]
+            return max(self.calc(nums1),self.calc(nums2))
+        if len(nums) == 1:
+            return nums[0]
+        if len(nums) == 0:
+            return 0
+        
+    def calc(self, nums):
         f = [0 for i in xrange(len(nums))]
         if len(nums): f[0] = nums[0]
         else: return 0
@@ -21,6 +31,3 @@ class Solution(object):
         return f[len(nums)-1]
 
 
-if __name__ == '__main__':
-    s = Solution()
-    print s.rob([1,1])

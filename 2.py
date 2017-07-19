@@ -1,46 +1,38 @@
-#coding = utf-8
-import sys
-import pdb
+#!/usr/bin/env python
+# coding=utf-8
 
-if __name__ == "__main__":
-    
-    line = sys.stdin.readline()
-    s = str(line.strip())
-    line = sys.stdin.readline()
-    n = int(line.strip())
-    k = 0
-    pos = []
-    
-    s = list(s)
-    for i in range(len(s)):
-        if s[i] == 'X':
-            k += 1
-            pos.append(i)
-    ret = 0
-    for v in range(10 ** k):
-        l = []
-        tmp = v
-        while tmp>0:
-            l.append(tmp%10)
-            tmp/=10
-        for i in range(len(l),len(pos)):
-            l.append(0)
-        
-        l = str(l[i])
-        l = list(l)
-        for i in range(len(pos)):
-            s[pos[i]] = l[i]
-        
-        trans = ''
-        for c in s:
-            trans += c
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
 
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        num1, f = 0, 1
+        while not l1:
+            num1 += f*l1.val
+            l1 = l1.next
+            f *= 10
+        num2, f = 0, 1
+        while not l2:
+            num2 += f*l2.val
+            l2 = l2.next
+            f *= 10
+        num3 = num1+num2
+        head = ListNode(num3%10)
+        num3 /= 10
+        p = head
+        while num3:
+            q = ListNode(num3%10)
+            num3 /= 10
+            p.next = q
+            p = q
+        return head
 
-        num = int(trans)
-        if num % n == 0:
-            print num
-            
-            ret += 1
-
-    print ret
 

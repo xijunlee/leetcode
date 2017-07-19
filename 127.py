@@ -34,7 +34,7 @@ class Solution(object):
         #pdb.set_trace()
         while not Q.empty():
             current = Q.get()
-            print current.word,current.level 
+            #print current.word,current.level 
             if current.word == endWord:
                 return current.level
             tmp, characterList = [], 'qwertyuiopasdfghjklzxcvbnm'
